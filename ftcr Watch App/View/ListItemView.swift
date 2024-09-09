@@ -22,6 +22,7 @@ struct ListItemView: View {  // Ensure ListItemView conforms to 'View'
                 .animation(.easeInOut, value: downloadViewModel.isDownloading)
             } else {
                 Text(imageModel.fileName)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .transition(.blurReplace) // Apply
                     .animation(.easeInOut, value: downloadViewModel.isDownloading)
             }

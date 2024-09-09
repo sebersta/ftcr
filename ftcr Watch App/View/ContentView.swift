@@ -14,18 +14,7 @@ struct ContentView: View {
     @State var showContext = false
     
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-                .gesture(
-                    LongPressGesture()
-                        .onEnded { _ in
-                            withAnimation {
-                                showContext = true
-                            }
-                        }
-                )
-            
-            List {
+        List {
 //                Button("Stockholm") {
 //                    Task {
 //                        do {
@@ -34,71 +23,81 @@ struct ContentView: View {
 //                        }
 //                    }
 //                }
-//                Button("Cats") {
+//                Button("Copenhagen") {
 //                    Task {
 //                        do {
-//                            try await addImage(urlString: "http://192.168.40.155:8000", to: modelContext)
+//                            try await addImage(urlString: "https://cdn.sebersta.com/copenhagen.jpg", to: modelContext)
 //                        } catch {
 //                        }
 //                    }
 //                }
+            
+            ForEach(images) { image in
+                let downloadViewModel = downloadVMDict[image.id] ?? DownloadViewModel()
                 
-                ForEach(images) { image in
-                    let downloadViewModel = downloadVMDict[image.id] ?? DownloadViewModel()
-                    
-                    NavigationLink(destination: ImageView(imageModel: image)) {
-                        ListItemView(imageModel: image, downloadViewModel: downloadViewModel)
-                    }
-                    .swipeActions(edge: .leading) {
-                        Button() {
-                            Task {
-                                await reloadImage(image)
-                            }
-                        } label: {
-                            Label("Reload", systemImage: "arrow.clockwise")
+                NavigationLink(destination: ImageView(imageModel: image)) {
+                    ListItemView(imageModel: image, downloadViewModel: downloadViewModel)
+                }
+                .swipeActions(edge: .leading) {
+                    Button() {
+                        Task {
+                            await reloadImage(image)
                         }
-                        .disabled(downloadViewModel.isDownloading)
+                    } label: {
+                        Label("Reload", systemImage: "arrow.clockwise")
                     }
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) {
-                            deleteImage(image)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                        .disabled(downloadViewModel.isDownloading)
+                    .disabled(downloadViewModel.isDownloading)
+                }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                        deleteImage(image)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
                     }
+                    .disabled(downloadViewModel.isDownloading)
                 }
             }
-            
-            .toolbar {
-                TextFieldLink(prompt: Text("URL of the image")) {
-                    Label("Add", systemImage: "plus.circle.fill")
-                } onSubmit: { result in
-                    Task {
-                        do {
-                            try await addImage(urlString: result, to: modelContext)
-                        } catch {
-                            // Handle the error, for example, by showing an alert
-                            print("Failed to add image: \(error)")
-                        }
-                    }
-                }
-                .disableAutocorrection(true)
-                .textInputAutocapitalization(.never)
-            }
-            
-            
-            .overlay {
-                if showContext {
-                    ContextView(showOverlay: $showContext)
-                        .transition(.scale(scale: 1.2, anchor: .center).combined(with: .opacity))
-                        .animation(.easeInOut(duration: 0.1), value: showContext)
-                }
-            }
-            .scrollDisabled(showContext)
         }
-
+        
+        .toolbar {
+            TextFieldLink(prompt: Text("URL of the image")) {
+                Label("Add", systemImage: "plus.circle.fill")
+            } onSubmit: { result in
+                Task {
+                    do {
+                        try await addImage(urlString: result, to: modelContext)
+                    } catch {
+                        // Handle the error, for example, by showing an alert
+                        print("Failed to add image: \(error)")
+                    }
+                }
+            }
+            .disableAutocorrection(true)
+            .textInputAutocapitalization(.never)
+        }
+        
+        
+        .overlay {
+            if showContext {
+                ContextView(showOverlay: $showContext)
+                    .transition(.scale(scale: 1.2, anchor: .center).combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.1), value: showContext)
+            }
+        }
+        .scrollDisabled(showContext)
+        .onAppear(
+            perform: {
+                Task {
+                    do {
+                        try await addImage(urlString: "https://cdn.sebersta.com/stockholm.png", to: modelContext)
+                        try await addImage(urlString: "https://cdn.sebersta.com/copenhagen.jpg", to: modelContext)
+                    } catch {
+                    }
+                }
+            }
+        )
     }
+
     
     
     private func deleteImage(_ image: ImageModel) {

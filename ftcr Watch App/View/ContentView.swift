@@ -74,7 +74,6 @@ struct ContentView: View {
 //                perform: {
 //                    Task {
 //                        do {
-//                            try await addImage(urlString: "https://cdn.sebersta.com/helsinki0.jpg", to: modelContext)
 //                            try await addImage(urlString: "https://cdn.sebersta.com/copenhagen.jpg", to: modelContext)
 //                            try await addImage(urlString: "https://cdn.sebersta.com/stockholm.png", to: modelContext)
 //                        } catch {

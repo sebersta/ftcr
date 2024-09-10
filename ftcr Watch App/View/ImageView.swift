@@ -108,7 +108,7 @@ extension Image {
     }
 }
 
-extension UIImage: Transferable {
+extension UIImage: @retroactive Transferable {
     
     public static var transferRepresentation: some TransferRepresentation {
         

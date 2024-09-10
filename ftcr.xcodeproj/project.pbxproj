@@ -3,21 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D1DB2192C8FC47D004854F0 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1DB2182C8FC47D004854F0 /* Tip.swift */; };
-		3D97EB5C2C8EB1090043C33E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB512C8EB1090043C33E /* ContentView.swift */; };
-		3D97EB5D2C8EB1090043C33E /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB522C8EB1090043C33E /* ContextView.swift */; };
-		3D97EB5E2C8EB1090043C33E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB532C8EB1090043C33E /* ImageView.swift */; };
-		3D97EB5F2C8EB1090043C33E /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB542C8EB1090043C33E /* ListItemView.swift */; };
-		3D97EB602C8EB1090043C33E /* AddImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB562C8EB1090043C33E /* AddImage.swift */; };
-		3D97EB612C8EB1090043C33E /* DownloadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB582C8EB1090043C33E /* DownloadViewModel.swift */; };
-		3D97EB622C8EB1090043C33E /* ftcrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB592C8EB1090043C33E /* ftcrApp.swift */; };
-		3D97EB632C8EB1090043C33E /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB5A2C8EB1090043C33E /* ImageModel.swift */; };
-		3D97EB642C8EB1090043C33E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D97EB4F2C8EB1090043C33E /* Preview Assets.xcassets */; };
-		3D97EB652C8EB1090043C33E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D97EB572C8EB1090043C33E /* Assets.xcassets */; };
 		3DB13A6D2C8E584B00BCB365 /* ftcr Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3DB13A6C2C8E584B00BCB365 /* ftcr Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -46,20 +35,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3D1DB2182C8FC47D004854F0 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
-		3D97EB4F2C8EB1090043C33E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3D97EB512C8EB1090043C33E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3D97EB522C8EB1090043C33E /* ContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextView.swift; sourceTree = "<group>"; };
-		3D97EB532C8EB1090043C33E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		3D97EB542C8EB1090043C33E /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
-		3D97EB562C8EB1090043C33E /* AddImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImage.swift; sourceTree = "<group>"; };
-		3D97EB572C8EB1090043C33E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3D97EB582C8EB1090043C33E /* DownloadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewModel.swift; sourceTree = "<group>"; };
-		3D97EB592C8EB1090043C33E /* ftcrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ftcrApp.swift; sourceTree = "<group>"; };
-		3D97EB5A2C8EB1090043C33E /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		3DB13A662C8E584B00BCB365 /* ftcr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ftcr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB13A6C2C8E584B00BCB365 /* ftcr Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ftcr Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3D5128EF2C8FFD7400353249 /* ftcr Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "ftcr Watch App";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3DB13A692C8E584B00BCB365 /* Frameworks */ = {
@@ -72,44 +58,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D97EB502C8EB1090043C33E /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				3D97EB4F2C8EB1090043C33E /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		3D97EB552C8EB1090043C33E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3D97EB512C8EB1090043C33E /* ContentView.swift */,
-				3D97EB522C8EB1090043C33E /* ContextView.swift */,
-				3D97EB532C8EB1090043C33E /* ImageView.swift */,
-				3D97EB542C8EB1090043C33E /* ListItemView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3D97EB5B2C8EB1090043C33E /* ftcr Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				3D97EB502C8EB1090043C33E /* Preview Content */,
-				3D97EB552C8EB1090043C33E /* View */,
-				3D97EB562C8EB1090043C33E /* AddImage.swift */,
-				3D97EB582C8EB1090043C33E /* DownloadViewModel.swift */,
-				3D97EB592C8EB1090043C33E /* ftcrApp.swift */,
-				3D97EB5A2C8EB1090043C33E /* ImageModel.swift */,
-				3D1DB2182C8FC47D004854F0 /* Tip.swift */,
-				3D97EB572C8EB1090043C33E /* Assets.xcassets */,
-			);
-			path = "ftcr Watch App";
-			sourceTree = "<group>";
-		};
 		3DB13A5F2C8E584B00BCB365 = {
 			isa = PBXGroup;
 			children = (
-				3D97EB5B2C8EB1090043C33E /* ftcr Watch App */,
+				3D5128EF2C8FFD7400353249 /* ftcr Watch App */,
 				3DB13A672C8E584B00BCB365 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,6 +109,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				3D5128EF2C8FFD7400353249 /* ftcr Watch App */,
+			);
 			name = "ftcr Watch App";
 			packageProductDependencies = (
 			);
@@ -183,7 +138,6 @@
 				};
 			};
 			buildConfigurationList = 3DB13A632C8E584B00BCB365 /* Build configuration list for PBXProject "ftcr" */;
-			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -192,6 +146,7 @@
 			);
 			mainGroup = 3DB13A5F2C8E584B00BCB365;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 3DB13A672C8E584B00BCB365 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -214,8 +169,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D97EB642C8EB1090043C33E /* Preview Assets.xcassets in Resources */,
-				3D97EB652C8EB1090043C33E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,15 +179,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D97EB5C2C8EB1090043C33E /* ContentView.swift in Sources */,
-				3D97EB5D2C8EB1090043C33E /* ContextView.swift in Sources */,
-				3D97EB5E2C8EB1090043C33E /* ImageView.swift in Sources */,
-				3D97EB5F2C8EB1090043C33E /* ListItemView.swift in Sources */,
-				3D97EB602C8EB1090043C33E /* AddImage.swift in Sources */,
-				3D97EB612C8EB1090043C33E /* DownloadViewModel.swift in Sources */,
-				3D1DB2192C8FC47D004854F0 /* Tip.swift in Sources */,
-				3D97EB622C8EB1090043C33E /* ftcrApp.swift in Sources */,
-				3D97EB632C8EB1090043C33E /* ImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"ftcr Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8HVQYZSB2F;
 				ENABLE_PREVIEWS = YES;
@@ -400,7 +344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"ftcr Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8HVQYZSB2F;
 				ENABLE_PREVIEWS = YES;

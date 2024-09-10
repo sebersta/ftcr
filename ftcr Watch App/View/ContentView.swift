@@ -12,18 +12,13 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \ImageModel.addedTime, order: .reverse) var images: [ImageModel]
     @State var showContext = false
-    @State private var path: [ImageModel] = []
-    
+
     var body: some View {
-        NavigationStack(path: $path) {
             List(images) { image in
-                let downloadViewModel = downloadVMDict[image.id] ?? DownloadViewModel()
-                ListItemView(imageModel: image, downloadViewModel: downloadViewModel)
-                    .onTapGesture {
-                        path.append(image)
-                    }
-                    .onLongPressGesture {
-                        showContext = true
+                    let downloadViewModel = downloadVMDict[image.id] ?? DownloadViewModel()
+
+                    NavigationLink(destination: ImageView(imageModel: image)) {
+                        ListItemView(imageModel: image, downloadViewModel: downloadViewModel)
                     }
                     .swipeActions(edge: .leading) {
                         Button() {
@@ -44,45 +39,49 @@ struct ContentView: View {
                         .disabled(downloadViewModel.isDownloading)
                     }
             }
-            .navigationDestination(for: ImageModel.self) { image in
-                ImageView(imageModel: image)
-            }
+//            .containerBackground(Color.accentColor.gradient, for: .navigation)
+            .navigationTitle("Images")
             .toolbar {
-                TextFieldLink(prompt: Text("URL of the image")) {
-                    Label("Add", systemImage: "plus.circle.fill")
-                } onSubmit: { result in
-                    Task {
-                        do {
-                            try await addImage(urlString: result, to: modelContext)
-                        } catch {
-                            // Handle the error, for example, by showing an alert
-                            print("Failed to add image: \(error)")
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button {
+                        showContext = true
+                    } label : {
+                        Label("Show Menu",
+                        systemImage: "ellipsis")
+                    }
+                    TextFieldLink(prompt: Text("URL of the image")) {
+                        Label("Add", systemImage: "plus")
+                            .foregroundStyle(.accent)
+                    } onSubmit: { result in
+                        Task {
+                            do {
+                                try await addImage(urlString: result, to: modelContext)
+                            } catch {
+                                // Handle the error, for example, by showing an alert
+                                print("Failed to add image: \(error)")
+                            }
                         }
                     }
+                    .disableAutocorrection(true)
+                    .textInputAutocapitalization(.never)
                 }
-                .disableAutocorrection(true)
-                .textInputAutocapitalization(.never)
             }
             
-            
-
             .sheet(isPresented: $showContext){
                 ContextView(showContext: $showContext)
-
             }
-            .scrollDisabled(showContext)
-        }
-//        .onAppear(
-//            perform: {
-//                Task {
-//                    do {
-//                        try await addImage(urlString: "https://cdn.sebersta.com/stockholm.png", to: modelContext)
-//                        try await addImage(urlString: "https://cdn.sebersta.com/copenhagen.jpg", to: modelContext)
-//                    } catch {
+//            .onAppear(
+//                perform: {
+//                    Task {
+//                        do {
+//                            try await addImage(urlString: "https://cdn.sebersta.com/helsinki0.jpg", to: modelContext)
+//                            try await addImage(urlString: "https://cdn.sebersta.com/copenhagen.jpg", to: modelContext)
+//                            try await addImage(urlString: "https://cdn.sebersta.com/stockholm.png", to: modelContext)
+//                        } catch {
+//                        }
 //                    }
 //                }
-//            }
-//        )
+//            )
     }
 
     

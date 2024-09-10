@@ -13,6 +13,15 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
     @Binding var showContext: Bool
     @Environment(\.modelContext) var modelContext
     @Query(sort: \ImageModel.addedTime, order: .reverse) var images: [ImageModel]
+    var appVersion: String {
+            (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "n/a"
+        }
+
+    var appDisplayName: String {
+            (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String)
+                ?? Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+                ?? "App Name Not Available"
+        }
     
     var body: some View {
         VStack {
@@ -21,13 +30,17 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
             } label: {
                 Label("Reload All", systemImage: "arrow.clockwise")
             }
-            .padding(.bottom, 20)
+            .padding(.top, 60)
+            
             
             Button(role: .destructive) {
                 deleteAll()
             } label: {
                 Label("Delete All", systemImage: "trash")
             }
+            Spacer(minLength: 10)
+            Text("\(appDisplayName) \(appVersion)")
+                .foregroundStyle(.secondary)
         }
     }
     

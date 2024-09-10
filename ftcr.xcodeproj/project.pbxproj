@@ -95,10 +95,10 @@
 				3D97EB502C8EB1090043C33E /* Preview Content */,
 				3D97EB552C8EB1090043C33E /* View */,
 				3D97EB562C8EB1090043C33E /* AddImage.swift */,
-				3D97EB572C8EB1090043C33E /* Assets.xcassets */,
 				3D97EB582C8EB1090043C33E /* DownloadViewModel.swift */,
 				3D97EB592C8EB1090043C33E /* ftcrApp.swift */,
 				3D97EB5A2C8EB1090043C33E /* ImageModel.swift */,
+				3D97EB572C8EB1090043C33E /* Assets.xcassets */,
 			);
 			path = "ftcr Watch App";
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ftcr-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ftcr;
+				INFOPLIST_KEY_CFBundleDisplayName = Ftcr;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -402,7 +402,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ftcr-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ftcr;
+				INFOPLIST_KEY_CFBundleDisplayName = Ftcr;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (

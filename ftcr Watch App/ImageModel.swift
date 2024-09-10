@@ -17,6 +17,7 @@ class ImageModel: Identifiable, ObservableObject {
     var imageData: Data?
     var addedTime: Date = Date.now
     var fileName: String
+    var fileSize: String = ""
     
     /// Initialzing the model by  downloading image data from `url` to `imageData`.
     /// - Parameter urlString: The url of the image provided when calling the initializer.
@@ -29,6 +30,7 @@ class ImageModel: Identifiable, ObservableObject {
         await downloadViewModel.downloadImage(from: url) { data in
             if let data = data {
                 self.imageData = data
+                self.fileSize = self.formatFileSize(data.count)
             } else {
                 print("Failed to download image data from \(url)")
             }
@@ -44,9 +46,21 @@ class ImageModel: Identifiable, ObservableObject {
         await downloadViewModel.downloadImage(from: url) { data in
             if let data = data {
                 self.imageData = data
+                self.fileSize = self.formatFileSize(data.count)
             } else {
                 print("Failed to download image data from \(self.url)")
             }
         }
     }
+    
+    private func formatFileSize(_ sizeInBytes: Int) -> String {
+        let byteCountFormatter = ByteCountFormatter()
+        byteCountFormatter.allowedUnits = [.useKB, .useMB]
+        byteCountFormatter.countStyle = .file
+        let formattedSize = byteCountFormatter.string(fromByteCount: Int64(sizeInBytes))
+        
+        // Replace commas with periods in the formatted string
+        return formattedSize.replacingOccurrences(of: ",", with: ".")
+    }
+    
 }

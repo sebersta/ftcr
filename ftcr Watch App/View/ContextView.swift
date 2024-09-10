@@ -25,14 +25,12 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
     
     var body: some View {
         VStack {
-            Button {
+            Spacer(minLength: 55)
+            Button() {
                     reloadAll()
             } label: {
                 Label("Reload All", systemImage: "arrow.clockwise")
             }
-            .padding(.top, 60)
-            
-            
             Button(role: .destructive) {
                 deleteAll()
             } label: {
@@ -64,4 +62,11 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
 
 #Preview {
     ContextView(showContext: .constant(true))
+//        .task {
+//            try? Tips.resetDatastore()
+//            try? Tips.configure([
+//                .displayFrequency(.immediate),
+//                .datastoreLocation(.applicationDefault)
+//            ])
+//        }
 }

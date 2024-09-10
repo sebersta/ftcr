@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D1DB2192C8FC47D004854F0 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1DB2182C8FC47D004854F0 /* Tip.swift */; };
 		3D97EB5C2C8EB1090043C33E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB512C8EB1090043C33E /* ContentView.swift */; };
 		3D97EB5D2C8EB1090043C33E /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB522C8EB1090043C33E /* ContextView.swift */; };
 		3D97EB5E2C8EB1090043C33E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97EB532C8EB1090043C33E /* ImageView.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D1DB2182C8FC47D004854F0 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		3D97EB4F2C8EB1090043C33E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3D97EB512C8EB1090043C33E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D97EB522C8EB1090043C33E /* ContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				3D97EB582C8EB1090043C33E /* DownloadViewModel.swift */,
 				3D97EB592C8EB1090043C33E /* ftcrApp.swift */,
 				3D97EB5A2C8EB1090043C33E /* ImageModel.swift */,
+				3D1DB2182C8FC47D004854F0 /* Tip.swift */,
 				3D97EB572C8EB1090043C33E /* Assets.xcassets */,
 			);
 			path = "ftcr Watch App";
@@ -229,6 +232,7 @@
 				3D97EB5F2C8EB1090043C33E /* ListItemView.swift in Sources */,
 				3D97EB602C8EB1090043C33E /* AddImage.swift in Sources */,
 				3D97EB612C8EB1090043C33E /* DownloadViewModel.swift in Sources */,
+				3D1DB2192C8FC47D004854F0 /* Tip.swift in Sources */,
 				3D97EB622C8EB1090043C33E /* ftcrApp.swift in Sources */,
 				3D97EB632C8EB1090043C33E /* ImageModel.swift in Sources */,
 			);

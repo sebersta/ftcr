@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DB13A6D2C8E584B00BCB365 /* ftcr Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3DB13A6C2C8E584B00BCB365 /* ftcr Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3DB13A6D2C8E584B00BCB365 /* Ftcr Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3DB13A6C2C8E584B00BCB365 /* Ftcr Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +27,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				3DB13A6D2C8E584B00BCB365 /* ftcr Watch App.app in Embed Watch Content */,
+				3DB13A6D2C8E584B00BCB365 /* Ftcr Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,8 +35,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3DB13A662C8E584B00BCB365 /* ftcr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ftcr.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DB13A6C2C8E584B00BCB365 /* ftcr Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ftcr Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DB13A662C8E584B00BCB365 /* Ftcr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ftcr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DB13A6C2C8E584B00BCB365 /* Ftcr Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ftcr Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -69,8 +69,8 @@
 		3DB13A672C8E584B00BCB365 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3DB13A662C8E584B00BCB365 /* ftcr.app */,
-				3DB13A6C2C8E584B00BCB365 /* ftcr Watch App.app */,
+				3DB13A662C8E584B00BCB365 /* Ftcr.app */,
+				3DB13A6C2C8E584B00BCB365 /* Ftcr Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3DB13A652C8E584B00BCB365 /* ftcr */ = {
+		3DB13A652C8E584B00BCB365 /* Ftcr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3DB13A802C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "ftcr" */;
+			buildConfigurationList = 3DB13A802C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "Ftcr" */;
 			buildPhases = (
 				3DB13A642C8E584B00BCB365 /* Resources */,
 				3DB13A7F2C8E584C00BCB365 /* Embed Watch Content */,
@@ -90,16 +90,16 @@
 			dependencies = (
 				3DB13A6F2C8E584B00BCB365 /* PBXTargetDependency */,
 			);
-			name = ftcr;
+			name = Ftcr;
 			packageProductDependencies = (
 			);
 			productName = ftcr;
-			productReference = 3DB13A662C8E584B00BCB365 /* ftcr.app */;
+			productReference = 3DB13A662C8E584B00BCB365 /* Ftcr.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
 		};
-		3DB13A6B2C8E584B00BCB365 /* ftcr Watch App */ = {
+		3DB13A6B2C8E584B00BCB365 /* Ftcr Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3DB13A7C2C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "ftcr Watch App" */;
+			buildConfigurationList = 3DB13A7C2C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "Ftcr Watch App" */;
 			buildPhases = (
 				3DB13A682C8E584B00BCB365 /* Sources */,
 				3DB13A692C8E584B00BCB365 /* Frameworks */,
@@ -112,11 +112,11 @@
 			fileSystemSynchronizedGroups = (
 				3D5128EF2C8FFD7400353249 /* ftcr Watch App */,
 			);
-			name = "ftcr Watch App";
+			name = "Ftcr Watch App";
 			packageProductDependencies = (
 			);
 			productName = "ftcr Watch App";
-			productReference = 3DB13A6C2C8E584B00BCB365 /* ftcr Watch App.app */;
+			productReference = 3DB13A6C2C8E584B00BCB365 /* Ftcr Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -137,7 +137,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3DB13A632C8E584B00BCB365 /* Build configuration list for PBXProject "ftcr" */;
+			buildConfigurationList = 3DB13A632C8E584B00BCB365 /* Build configuration list for PBXProject "Ftcr" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -151,8 +151,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3DB13A652C8E584B00BCB365 /* ftcr */,
-				3DB13A6B2C8E584B00BCB365 /* ftcr Watch App */,
+				3DB13A652C8E584B00BCB365 /* Ftcr */,
+				3DB13A6B2C8E584B00BCB365 /* Ftcr Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -187,7 +187,7 @@
 /* Begin PBXTargetDependency section */
 		3DB13A6F2C8E584B00BCB365 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3DB13A6B2C8E584B00BCB365 /* ftcr Watch App */;
+			target = 3DB13A6B2C8E584B00BCB365 /* Ftcr Watch App */;
 			targetProxy = 3DB13A6E2C8E584B00BCB365 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -313,7 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"ftcr Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8HVQYZSB2F;
 				ENABLE_PREVIEWS = YES;
@@ -344,7 +344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"ftcr Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8HVQYZSB2F;
 				ENABLE_PREVIEWS = YES;
@@ -374,7 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 8HVQYZSB2F;
 				INFOPLIST_KEY_CFBundleDisplayName = ftcr;
 				MARKETING_VERSION = 1.0;
@@ -389,7 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 8HVQYZSB2F;
 				INFOPLIST_KEY_CFBundleDisplayName = ftcr;
 				MARKETING_VERSION = 1.0;
@@ -404,7 +404,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3DB13A632C8E584B00BCB365 /* Build configuration list for PBXProject "ftcr" */ = {
+		3DB13A632C8E584B00BCB365 /* Build configuration list for PBXProject "Ftcr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DB13A7A2C8E584C00BCB365 /* Debug */,
@@ -413,7 +413,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3DB13A7C2C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "ftcr Watch App" */ = {
+		3DB13A7C2C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "Ftcr Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DB13A7D2C8E584C00BCB365 /* Debug */,
@@ -422,7 +422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3DB13A802C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "ftcr" */ = {
+		3DB13A802C8E584C00BCB365 /* Build configuration list for PBXNativeTarget "Ftcr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DB13A812C8E584C00BCB365 /* Debug */,

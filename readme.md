@@ -12,7 +12,7 @@
 	<br>
 </div>
 
-Ftcr is an open-source watchOS only app for downloading images from the internet. You can download a single image from a url or download all images from a html webpage.
+Ftcr is an open-source watchOS only app for downloading images from an URL. You can download a single image or download all images from a html webpage.
 
 
 ## Download

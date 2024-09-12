@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WatchKit
 
 struct ImageView: View {
     @ObservedObject var imageModel: ImageModel
@@ -33,6 +32,21 @@ struct ImageView: View {
             )
             .navigationBarBackButtonHidden(isUIHidden)
             ._statusBarHidden(isUIHidden)
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    if !isUIHidden {
+                        Spacer()
+                        ShareLink(
+                            item: uiImage,
+                            preview: SharePreview(
+                                imageModel.fileName,
+                                image: uiImage)
+                        ) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                    }
+                }
+            }
         } else {
             Text("Image not available, check the URL and the file source.")
         }
@@ -57,9 +71,10 @@ struct ImageDisplayView: View {
             .offset(offset)
             .ignoresSafeArea()
             .focusable()
-            .digitalCrownRotation($crownValue, from: -5, through: 20, by: 0.1, sensitivity: .medium, isContinuous: false, isHapticFeedbackEnabled: true)
+            .digitalCrownRotation($crownValue, from: -5, through: 20, by: 0.2, sensitivity: .high, isContinuous: false, isHapticFeedbackEnabled: true)
             .onChange(of: crownValue, initial: false) { oldValue, newValue in
                 scale = CGFloat(1 + newValue / 10)
+                isUIHidden = true
             }
             .gesture(
                 DragGesture()

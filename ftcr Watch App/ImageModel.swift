@@ -26,7 +26,7 @@ class ImageModel: Identifiable, ObservableObject {
         self.fileName = url.lastPathComponent
         print("ImageModel initializing")
         let downloadViewModel: DownloadViewModel = DownloadViewModel()
-        downloadVMDict.updateValue(downloadViewModel, forKey: self.id)
+        viewModelDict.updateValue(downloadViewModel, forKey: self.id)
         await downloadViewModel.downloadImage(from: url) { data in
             if let data = data {
                 self.imageData = data
@@ -40,9 +40,9 @@ class ImageModel: Identifiable, ObservableObject {
     
     /// Download the image data again after initializing.
     func reloadImageData() async {
-        let downloadViewModel: DownloadViewModel = downloadVMDict[self.id] ?? DownloadViewModel()
+        let downloadViewModel: DownloadViewModel = viewModelDict[self.id] ?? DownloadViewModel()
         
-        if downloadViewModel.isDownloading { return }
+        if downloadViewModel.isLoading { return }
         await downloadViewModel.downloadImage(from: url) { data in
             if let data = data {
                 self.imageData = data

@@ -55,7 +55,7 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
         for image in images {
             modelContext.delete(image)
         }
-        downloadVMDict.removeAll()
+        viewModelDict.removeAll()
         showContext = false
     }
 }

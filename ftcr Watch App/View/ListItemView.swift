@@ -7,19 +7,19 @@ struct ListItemView: View {  // Ensure ListItemView conforms to 'View'
     
     var body: some View {
         ZStack {
-            if downloadViewModel.isDownloading {
+            if downloadViewModel.isLoading {
                 VStack {
                     HStack {
                         Text("Downloading...")
                         Spacer(minLength: 0)
-                        Text(downloadViewModel.downloadSpeed)
+                        Text(downloadViewModel.speed)
                     }
                     .font(.caption2)
-                    ProgressView(value: downloadViewModel.downloadProgress)
+                    ProgressView(value: downloadViewModel.progress)
                         .tint(.accent)
                 }
                 .transition(.blurReplace) // Apply transition
-                .animation(.easeInOut, value: downloadViewModel.isDownloading)
+                .animation(.easeInOut, value: downloadViewModel.isLoading)
             } else { 
                 HStack{
                     if let imageData = imageModel.imageData, let uiImage = UIImage(data: imageData) {
@@ -39,11 +39,11 @@ struct ListItemView: View {  // Ensure ListItemView conforms to 'View'
                     .truncationMode(.tail)
                 }
                 .transition(.blurReplace) // Apply
-                .animation(.easeInOut, value: downloadViewModel.isDownloading)
+                .animation(.easeInOut, value: downloadViewModel.isLoading)
             }
         }
         .onAppear {
-            downloadVMDict.updateValue(downloadViewModel, forKey: imageModel.id)
+            viewModelDict.updateValue(downloadViewModel, forKey: imageModel.id)
         }
         }
     }

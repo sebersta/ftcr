@@ -4,7 +4,6 @@
 //
 //  Created by Jian Qin on 2024/8/28.
 //
-
 import SwiftUI
 import SwiftData
 
@@ -14,32 +13,33 @@ struct ContentView: View {
     @State var showContext = false
 
     var body: some View {
+        NavigationStack {
             List(images) { image in
-                    let downloadViewModel = downloadVMDict[image.id] ?? DownloadViewModel()
-
-                    NavigationLink(destination: ImageView(imageModel: image)) {
-                        ListItemView(imageModel: image, downloadViewModel: downloadViewModel)
-                    }
-                    .swipeActions(edge: .leading) {
-                        Button() {
-                            Task {
-                                await reloadImage(image)
-                            }
-                        } label: {
-                            Label("Reload", systemImage: "arrow.clockwise")
+                let viewModel = viewModelDict[image.id] ?? DownloadViewModel()
+                
+                NavigationLink(destination: ImageView(imageModel: image)) {
+                    ListItemView(imageModel: image, downloadViewModel: viewModel)
+                }
+                .swipeActions(edge: .leading) {
+                    Button() {
+                        Task {
+                            await reloadImage(image)
                         }
-                        .disabled(downloadViewModel.isDownloading)
+                    } label: {
+                        Label("Reload", systemImage: "arrow.clockwise")
                     }
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) {
-                            deleteImage(image)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                        .disabled(downloadViewModel.isDownloading)
+                    .disabled(viewModel.isLoading)
+                }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                        deleteImage(image)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
                     }
+                    .disabled(viewModel.isLoading)
+                }
             }
-//            .containerBackground(Color.accentColor.gradient, for: .navigation)
+            //            .containerBackground(Color.accentColor.gradient, for: .navigation)
             .navigationTitle("Images")
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
@@ -47,8 +47,20 @@ struct ContentView: View {
                         showContext = true
                     } label : {
                         Label("Show Menu",
-                        systemImage: "ellipsis")
+                              systemImage: "ellipsis")
                     }
+//                    Button {
+//                        Task {
+//                            do {
+//    //                            try await addImage(urlString: "https://cdn.sebersta.com/copenhagen.jpg", to: modelContext)
+//                                try await addImage(urlString: "http://192.168.40.155:8000", to: modelContext)
+//                            } catch {
+//                            }
+//                        }
+//                    } label : {
+//                        Label("Show Menu",
+//                        systemImage: "arrow.down")
+//                    }
                     TextFieldLink(prompt: Text("URL of the image")) {
                         Label("Add", systemImage: "plus")
                             .foregroundStyle(.accent)
@@ -70,24 +82,14 @@ struct ContentView: View {
             .sheet(isPresented: $showContext){
                 ContextView(showContext: $showContext)
             }
-//            .onAppear(
-//                perform: {
-//                    Task {
-//                        do {
-//                            try await addImage(urlString: "https://cdn.sebersta.com/copenhagen.jpg", to: modelContext)
-//                            try await addImage(urlString: "https://cdn.sebersta.com/stockholm.png", to: modelContext)
-//                        } catch {
-//                        }
-//                    }
-//                }
-//            )
+        }
     }
 
     
     
     private func deleteImage(_ image: ImageModel) {
         modelContext.delete(image)
-        downloadVMDict.removeValue(forKey: image.id)
+        viewModelDict.removeValue(forKey: image.id)
     }
     
     private func reloadImage(_ image: ImageModel) async {

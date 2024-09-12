@@ -1,12 +1,12 @@
 import Foundation
 import SwiftData
 
-var downloadVMDict: [UUID: DownloadViewModel] = [:]
+var viewModelDict: [UUID: DownloadViewModel] = [:]
 
 class DownloadViewModel: NSObject, ObservableObject, URLSessionDataDelegate {
-    @Published var isDownloading = false
-    @Published var downloadSpeed: String = "0 KB/s"
-    @Published var downloadProgress: Double = 0.0
+    @Published var isLoading = false
+    @Published var speed: String = "0 KB/s"
+    @Published var progress: Double = 0.0
     
     private var task: URLSessionDataTask?
     private var lastReceivedDataTime: Date?
@@ -17,7 +17,7 @@ class DownloadViewModel: NSObject, ObservableObject, URLSessionDataDelegate {
         
     func downloadImage(from url: URL, completion: @escaping (Data?) -> Void) async {
         await MainActor.run {
-            isDownloading = true
+            isLoading = true
             let startTime = Date()
             lastReceivedDataTime = startTime
             totalBytesReceived = 0
@@ -43,7 +43,7 @@ class DownloadViewModel: NSObject, ObservableObject, URLSessionDataDelegate {
             
             // Calculate progress
             if self.expectedContentLength > 0 {
-                self.downloadProgress = Double(self.totalBytesReceived) / Double(self.expectedContentLength)
+                self.progress = Double(self.totalBytesReceived) / Double(self.expectedContentLength)
             }
             
             // Calculate speed
@@ -52,7 +52,7 @@ class DownloadViewModel: NSObject, ObservableObject, URLSessionDataDelegate {
                 let timeInterval = currentTime.timeIntervalSince(lastReceivedDataTime)
                 if timeInterval > 0.2 {
                     let speed = Double(bytesReceived) / 1024.0 / timeInterval
-                    self.downloadSpeed = String(format: "%.0f KB/s", speed)
+                    self.speed = String(format: "%.0f KB/s", speed)
                     self.lastReceivedDataTime = currentTime
                 }
             }
@@ -72,15 +72,14 @@ class DownloadViewModel: NSObject, ObservableObject, URLSessionDataDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.isDownloading = false
+            self.isLoading = false
             if let error = error {
                 print("Error downloading image: \(error.localizedDescription)")
-                self.downloadSpeed = "0 KB/s"
+                self.speed = "0 KB/s"
                 self.completionHandler?(nil) // Return nil data on error
                 return
             }
             
-            // Download completed, return data
             self.completionHandler?(self.receivedData)
         }
     }

@@ -13,6 +13,8 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
     @Binding var showContext: Bool
     @Environment(\.modelContext) var modelContext
     @Query(sort: \ImageModel.addedTime, order: .reverse) var images: [ImageModel]
+    @Query(sort: \ImageListModel.addedTime, order: .reverse) var imageLists: [ImageListModel]
+    
     var appVersion: String {
             (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "n/a"
         }
@@ -54,6 +56,9 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
     private func deleteAll() {
         for image in images {
             modelContext.delete(image)
+        }
+        for imageList in imageLists {
+            modelContext.delete(imageList)
         }
         viewModelDict.removeAll()
         showContext = false

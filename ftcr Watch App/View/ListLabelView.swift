@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ListItemView: View {  // Ensure ListItemView conforms to 'View'
+struct ListLabelView: View {
     @ObservedObject var imageModel: ImageModel
     @ObservedObject var downloadViewModel: DownloadViewModel
 

@@ -109,9 +109,13 @@ private func addSingleImage(url: URL, to modelContext: ModelContext) async throw
 ///     print("Failed to add images: \(error)")
 /// }
 /// ```
+
 @MainActor
 private func addImagesFromHTMLPage(url: URL, to modelContext: ModelContext) async throws {
     do {
+        let newImageList = ImageListModel(url: url)
+        modelContext.insert(newImageList)
+        
         print("Downloading HTML content from URL: \(url.absoluteString)")
         let html = try await downloadHTMLContent(from: url)
         
@@ -120,10 +124,8 @@ private func addImagesFromHTMLPage(url: URL, to modelContext: ModelContext) asyn
         
         for imageUrl in imageUrls {
             print("Initializing new Image object for image URL: \(imageUrl.absoluteString)")
-            let newImage = await ImageModel(url: imageUrl)
-            
-            print("Inserting new Image object into context")
-            modelContext.insert(newImage)
+            let newImage = await ImageModel(url: imageUrl, isChild: true)
+            newImageList.images.append(newImage)
         }
         
     } catch {

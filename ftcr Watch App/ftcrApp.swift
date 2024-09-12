@@ -14,7 +14,8 @@ struct ftcr_Watch_AppApp: App {
     var sharedModelContainer: ModelContainer = {
             let scheme = Schema([
                 // entities here
-                ImageModel.self
+                ImageModel.self,
+                ImageListModel.self
             ])
             
             let modelConfiguration = ModelConfiguration(schema: scheme,

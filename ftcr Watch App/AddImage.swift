@@ -13,10 +13,21 @@ func addImage(urlString: String, to modelContext: ModelContext) async throws {
     print("Attempting to add image(s) from URL: \(urlString)")
     
     var urlWithScheme = urlString
-        
-    // If the input doesn't start with "http://" or "https://", add "https://"
+    
+    // If the input doesn't start with "http://" or "https://", add "http://"
     if !urlWithScheme.lowercased().hasPrefix("http://") && !urlWithScheme.lowercased().hasPrefix("https://") {
-        urlWithScheme = "https://\(urlWithScheme)"
+        urlWithScheme = "http://\(urlWithScheme)"
+    }
+    
+    // Updated regex for IPv4 LAN addresses allowing ports and paths
+    let ipv4Regex = #"^(http://|https://)?(10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2[0-9]|3[0-1])\.\d{1,3}\.\d{1,3})(:\d{1,5})?(/[^\s]*)?$"#
+    let ipv6Regex = #"^(http://|https://)?\[(::1|(?:[fF]{0,4}:)?(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4})\](?::\d{1,5})?(/[^\s]*)?$"#
+
+    // Ensure the URL matches the IPv4 or IPv6 local area network formats
+    if (urlWithScheme.range(of: ipv4Regex, options: .regularExpression) == nil) &&
+        (urlWithScheme.range(of: ipv6Regex, options: .regularExpression) == nil) {
+        print("Invalid or non-LAN IP address provided: \(urlWithScheme)")
+        throw URLError(.badURL)
     }
     
     guard let validUrl = URL(string: urlWithScheme) else {

@@ -67,11 +67,5 @@ struct ContextView: View { // Renamed to follow Swift naming conventions
 
 #Preview {
     ContextView(showContext: .constant(true))
-//        .task {
-//            try? Tips.resetDatastore()
-//            try? Tips.configure([
-//                .displayFrequency(.immediate),
-//                .datastoreLocation(.applicationDefault)
-//            ])
-//        }
+
 }

@@ -23,17 +23,22 @@ class ImageListModel: ObservableObject, Identifiable {
     
     func reloadImageData() async {
         do {
-            self.images.removeAll()
+            
             let html = try await downloadHTMLContent(from: url)
             
             let imageUrls = extractImageURLs(from: html, baseURL: url)
             
-            for imageUrl in imageUrls {
-                let newImage = await ImageModel(url: imageUrl, isChild: true)
-                self.images.append(newImage)
+            if !imageUrls.isEmpty {
+                self.images.removeAll()
+                for imageUrl in imageUrls {
+                    let newImage = await ImageModel(url: imageUrl, isChild: true)
+                    self.images.append(newImage)
+                }
             }
+            
         } catch {
             print("Failed to add images from HTML page: \(error.localizedDescription)")
         }
     }
 }
+

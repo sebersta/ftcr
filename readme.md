@@ -3,7 +3,7 @@
 	<a href="https://github.com/sebersta/ftcr">
 		<img src="readmeicon.png" width="200" height="200">
 	</a>
-	<h1>Ftcr</h1>
+	<h1>Image Fetcher</h1>
 	<p>
 		<b>The missing image downloader for WatchOS</b>
 	</p>

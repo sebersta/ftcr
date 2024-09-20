@@ -78,37 +78,65 @@ private func addImagesFromHTMLPage(url: URL, to modelContext: ModelContext) asyn
 }
 
 
+// Function to replace HTML entities with their actual characters
+func decodeHTMLEntities(in content: String) -> String {
+    var decodedContent = content
+    let entities = [
+        "&lt;": "<",
+        "&gt;": ">",
+        "&quot;": "\"",
+        "&apos;": "'",
+        "&amp;": "&"
+    ]
+    
+    entities.forEach { key, value in
+        decodedContent = decodedContent.replacingOccurrences(of: key, with: value)
+    }
+    
+    return decodedContent
+}
+
+// Download HTML or XML content
 func downloadHTMLContent(from url: URL) async throws -> String {
     let request = URLRequest(url: url)
     let (data, response) = try await URLSession.shared.data(for: request)
     
     if let httpResponse = response as? HTTPURLResponse {
-        print("HTML download completed with status code: \(httpResponse.statusCode)")
+        print("Download completed with status code: \(httpResponse.statusCode)")
     }
     
-    guard let html = String(data: data, encoding: .utf8) else {
+    guard let content = String(data: data, encoding: .utf8) else {
         throw NSError(domain: "Error converting data to string", code: 0, userInfo: nil)
     }
     
-    return html
+    return content
 }
 
-
-func extractImageURLs(from html: String, baseURL: URL) -> [URL] {
+// Extract image URLs from HTML or XML content
+func extractImageURLs(from content: String, baseURL: URL) -> [URL] {
     var imageURLs: [URL] = []
-    let pattern = "<a href=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|heics|ico|bmp|cur|pbm|atx|tif|tiff))\""
-    let regex = try? NSRegularExpression(pattern: pattern, options: [])
-    let matches = regex?.matches(in: html, options: [], range: NSRange(html.startIndex..., in: html))
+    
+    // Decode HTML entities before searching for image URLs
+    let decodedContent = decodeHTMLEntities(in: content)
+    
+    // Pattern for image extensions in HTML <a> tags and <img> tags in RSS <description> fields
+    let imagePattern = "<img src=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|ico|cur|pbm|tif|tiff))\""
+    
+    // Find URLs using the pattern
+    let regex = try? NSRegularExpression(pattern: imagePattern, options: [])
+    let matches = regex?.matches(in: decodedContent, options: [], range: NSRange(decodedContent.startIndex..., in: decodedContent))
     
     matches?.forEach { match in
-        if let range = Range(match.range(at: 1), in: html) {
-            let relativePath = String(html[range])
+        if let range = Range(match.range(at: 1), in: decodedContent) {
+            let relativePath = String(decodedContent[range])
             if let imageURL = URL(string: relativePath, relativeTo: baseURL) {
                 imageURLs.append(imageURL)
             }
         }
     }
+    
+    // Log results
+    print("Found \(imageURLs.count) image URLs")
+    
     return imageURLs
 }
-
-

@@ -1,6 +1,6 @@
 # Privacy Policy
 
-No data or personal information is collected by ftcr.
+No data or personal information is collected by Fetch Image.
 
 ##### Contact
 

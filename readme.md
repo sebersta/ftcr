@@ -12,7 +12,7 @@
 	<br>
 </div>
 
-Ftcr is an open-source watchOS only app for downloading images from an URL. You can download a single image or download all images from a html webpage.
+Fetch Image is an open-source watchOS only app for downloading images from an URL. You can download a single image or download all images from a html webpage.
 
 
 ## Download
@@ -23,8 +23,8 @@ Ftcr is an open-source watchOS only app for downloading images from an URL. You 
 
 ## Tip
 
-In addition to downloading a single image, Ftcr also supports batch downloading images from a webpage. 
-When given a URL to a webpage, Ftcr will match image URLs from the HTML content and download them all. A great use case is to go to a folder in your computer with many images and `python -m http.server` to serve the folder. Then you can download all images from the folder to your watch.
+In addition to downloading a single image, Fetch Image also supports batch downloading images from a webpage or a RSS feed. 
+When given a URL to a webpage or a RSS feed, Fetch Image will match image URLs from the web content and download them all. A great use case is to go to a folder in your computer with many images and `python -m http.server` to serve the folder. Then you can download all images from the folder to your watch.
 
 ## License
 

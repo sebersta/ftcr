@@ -120,13 +120,13 @@ func extractImageURLs(from content: String, baseURL: URL) -> [URL] {
     let decodedContent = decodeHTMLEntities(in: content)
     
     // Patterns for finding image URLs in <img> and <a> tags
-    let imgPattern = "<img\\s+[^>]*src=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|ico|cur|pbm|tif|tiff))\""
+    let imgPattern = "<img\\s+[^>]*src=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|heics|ico|bmp|cur|pbm|atx|tif|tiff))\""
     let anchorPattern = "<a\\s+[^>]*href=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|heics|ico|bmp|cur|pbm|atx|tif|tiff))\""
     
     let patterns = [imgPattern, anchorPattern]
     
     for pattern in patterns {
-        if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
+        if let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) {
             let matches = regex.matches(in: decodedContent, options: [], range: NSRange(decodedContent.startIndex..., in: decodedContent))
             
             for match in matches {

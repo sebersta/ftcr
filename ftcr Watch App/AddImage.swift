@@ -119,18 +119,23 @@ func extractImageURLs(from content: String, baseURL: URL) -> [URL] {
     // Decode HTML entities before searching for image URLs
     let decodedContent = decodeHTMLEntities(in: content)
     
-    // Pattern for image extensions in HTML <a> tags and <img> tags in RSS <description> fields
-    let imagePattern = "<img src=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|ico|cur|pbm|tif|tiff))\""
+    // Patterns for finding image URLs in <img> and <a> tags
+    let imgPattern = "<img\\s+[^>]*src=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|ico|cur|pbm|tif|tiff))\""
+    let anchorPattern = "<a\\s+[^>]*href=\"([^\"]+\\.(jpeg|jpg|png|gif|bmp|heic|heif|heics|ico|bmp|cur|pbm|atx|tif|tiff))\""
     
-    // Find URLs using the pattern
-    let regex = try? NSRegularExpression(pattern: imagePattern, options: [])
-    let matches = regex?.matches(in: decodedContent, options: [], range: NSRange(decodedContent.startIndex..., in: decodedContent))
+    let patterns = [imgPattern, anchorPattern]
     
-    matches?.forEach { match in
-        if let range = Range(match.range(at: 1), in: decodedContent) {
-            let relativePath = String(decodedContent[range])
-            if let imageURL = URL(string: relativePath, relativeTo: baseURL) {
-                imageURLs.append(imageURL)
+    for pattern in patterns {
+        if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
+            let matches = regex.matches(in: decodedContent, options: [], range: NSRange(decodedContent.startIndex..., in: decodedContent))
+            
+            for match in matches {
+                if let range = Range(match.range(at: 1), in: decodedContent) {
+                    let relativePath = String(decodedContent[range])
+                    if let imageURL = URL(string: relativePath, relativeTo: baseURL) {
+                        imageURLs.append(imageURL)
+                    }
+                }
             }
         }
     }

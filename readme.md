@@ -5,7 +5,7 @@
 	</a>
 	<h1>Image Fetcher</h1>
 	<p>
-		<b>The missing image downloader for WatchOS</b>
+		<b>Image downloader for WatchOS</b>
 	</p>
 	<br>
 	<br>
